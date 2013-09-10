@@ -1,0 +1,43 @@
+= content_for :title do
+  | Management Console
+
+div#manage
+
+
+  .row-fluid
+
+    .span5.offset1#requests
+      h2 Pending Accounts
+      table.table.table-striped.table-condensed.table-hover
+        thead
+          tr
+            th Email
+            th Created
+            th Actions
+        tbody
+          - @pending.each do |user|
+            tr id="user_#{user.id}"
+              td #{user.email}
+              td
+                = time_ago_in_words user.created_at
+                |  ago.
+              td
+                =button_to 'Approve', approve_user_path(user), :remote => true, :class => 'btn btn-primary', form_class: 'approve button_to'
+                =button_to 'Deny', deny_user_path(user), :remote => true, :class => 'btn btn-primary deny', form_class: 'deny button_to', confirm: 'Are you sure you want to deny access to this user?'
+              
+      
+    .span5#accounts
+      h2 Active Accounts
+      table.table.table-striped.table-condensed.table-hover
+        thead
+          tr
+            th Email
+            th class='role' Role
+            th Created
+            th Last Login
+            / th Actions
+        tbody id="approved_users"
+          =render :partial => 'approved_user', :collection => @approved
+            
+              
+              

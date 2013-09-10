@@ -1,0 +1,45 @@
+p#notice = notice
+= link_to 'view all services', services_path
+
+h1 Service Overview
+hr
+
+.row-fluid
+
+	.span6
+		h2 Basics
+		dl.dl-horizontal
+			dt Name
+			dd = @service.name
+			dt Url
+			dd = @service.url
+			dt Verb
+			dd = @service.verb
+			dt Included data
+			dd
+				label.checkbox
+					= check_box_tag :service, :include_basic, @service.include_basic, disabled: true
+					| Basic
+				label.checkbox
+					= check_box_tag :service, :include_extended, @service.include_extended, disabled: true
+					| Extended
+				label.checkbox
+					= check_box_tag :service, :include_data, @service.include_data, disabled: true
+					| User defined
+	
+	.span6
+		h2 Configured Triggers
+		table.table.table-condensed.table-striped
+			thead
+				tr
+					th Condition
+					th Stage
+					th Pipeline
+			tbody
+				- @service.triggers.all do |t|
+					tr
+						th t.condition
+						th t.stage.name
+						th t.stage.pipeline.name
+
+						

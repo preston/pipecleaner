@@ -1,0 +1,15 @@
+
+- puts "OBJ: #{f.object}"
+.nested-fields
+
+	.control-group
+		= f.label :stage_id, class: 'control-label'
+		.controls
+			= f.select :stage_id, options_for_select(@pipeline.stages.collect{|a| [a.name,a.id]}, f.object.stage.nil? ? '' : f.object.stage_id), required: 	true
+	.control-group
+		= f.label :condition, class: 'control-label'
+		.controls
+			= f.select :condition, options_for_select(Status::ALL.collect{|s| [s,s]}, f.object.nil? ? '' : f.object.condition), required: true
+	.control-group
+		.controls
+			= link_to_remove_association text_with_icon('Remove Notification', 'trash'), f, class: 'btn btn-danger'

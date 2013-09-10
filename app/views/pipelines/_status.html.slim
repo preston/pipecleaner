@@ -1,0 +1,12 @@
+p.muted
+	|  Click a stage marker to update its status. Work items with the most recently updated statuses are shown at the top. Click the star icon next to each work item to favorite it, and keep it at the top of the list.
+
+.text-center
+	- favorite_members = pipeline.members.select {|m| m.favorites.where(user_id: current_user).first }.sort{|a,b| b.updated_at <=> a.updated_at}
+	- other_members = pipeline.members.select {|m| m.favorites.where(user_id: current_user).first.nil? }.sort{|a,b| b.updated_at <=> a.updated_at}
+	div#favorite-members
+		- if !favorite_members.empty?
+			= render partial: 'pipelines/row', locals: {pipeline: pipeline}, collection: favorite_members
+	hr
+	div#other-members
+		= render partial: 'pipelines/row', locals: {pipeline: pipeline}, collection: other_members

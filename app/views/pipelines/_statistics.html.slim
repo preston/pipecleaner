@@ -1,0 +1,17 @@
+h4
+  i.icon-tasks
+  |  Pipeline Stage Breakdown
+p.muted This chart shows item counts per stage. Stages are ordered from first to last, starting at the top.
+- stats = pipeline.statistics
+- stages = pipeline.stages.rank(:number)
+- stages.each do |s|
+	.row-fluid
+		.span3
+			a.tip data-toggle="tooltip" title="" data-original-title="#{s.description}"
+				= s.name
+		.span9
+		  div class="progress"
+		  	- Status::ALL.each do |s_code|
+		  		- if s_code != Status::DEFAULT && stats[s.name][s_code].count > 0
+					a.tip data-toggle="tooltip" class="bar bar-#{s_code}" title="" data-original-title="#{stats[s.name][s_code].collect{|m|m.item.name}.join(', ')}"  style="width: #{(100.0 * stats[s.name][s_code].count	/ @pipeline.members.count)}%;"
+					  = stats[s.name][s_code].count

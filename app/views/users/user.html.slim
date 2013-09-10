@@ -1,0 +1,14 @@
+= form_for(current_user, html: {id: 'notifications-form', class: 'form form-horizontal', 'data-pipeline-id' => @pipeline.id}) do |f|
+
+	- if @user.errors.any?
+		#error_explanation
+			h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+			ul
+				- @user.errors.full_messages.each do |message|
+					li = message
+	
+	#user-notifications
+		= f.fields_for :notifications do |builder|
+			= render 'users/notification_fields', f: builder, parent_id: builder.object.id
+		.links
+			= link_to_add_association text_with_icon('Add Notification', 'plus'), f, :notifications, class: 'btn'

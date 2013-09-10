@@ -1,0 +1,41 @@
+h1 Job Queue
+
+p.muted These items represent background jobs that have been queued for PipeCleaner for asynchronous execution. Any type of long-running, resource-unintensive activity should be queue for execution by an application server to keep system responsiveness high. As PipeCleaner is *not* directly an HPC application, any resource-intentive task should implemented as a PipeCleaner-compatible service instead. Thanks for playing!
+
+
+table.table.table-condensed.table-striped
+	thead
+		tr
+			th Priority
+			th Attempts
+			th Handler
+			th Last Error
+			th Run At
+			th Locked At
+			th Failed At
+			th Locked By
+			th Queue
+			th Created At
+			th Updated At
+			th Actions
+	tbody
+		- DelayedJob.all.each do |j|
+			tr
+				td = j.priority
+				td = j.attempts
+				td = j.handler
+				td = j.last_error
+				td = j.run_at.nil? ? '' : (time_ago_in_words(j.run_at) + ' ago.')
+				td = j.locked_at.nil? ? '' : (time_ago_in_words(j.locked_at) + ' ago.')
+				td = j.failed_at.nil? ? '' : (time_ago_in_words(j.failed_at) + ' ago.')
+				td = j.locked_by
+				td = j.queue
+				td = j.created_at.nil? ? '' : (time_ago_in_words(j.created_at) + ' ago.')
+				td = j.updated_at.nil? ? '' : (time_ago_in_words(j.updated_at) + ' ago.')
+
+				td
+				 	/ = link_to  t('.edit', :default => t("helpers.links.edit")), edit_delayed_job_path(j), :class => 'btn btn-mini'
+				 	'
+				 	= link_to t('.destroy', :default => t("helpers.links.destroy")), delayed_job_path(j), :method => :delete, :data => { :confirm => "Are you sure?"}, :class => 'btn btn-mini btn-danger'
+
+

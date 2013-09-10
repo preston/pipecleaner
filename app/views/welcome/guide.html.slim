@@ -1,0 +1,152 @@
+
+.row-fluid
+	.span8.offset2
+		h1.lead PipeCleaner User's Guide
+
+		hr
+
+		h1 The Gist
+		p
+			| PipeCleaner is a cloud-based collaboration tool and executive reporting dashboard for sharing status updates on projects using assembly-line processes. Any number of 
+			b pipelines
+			|  may be created, with any number of 
+			b stages, 
+			|  which always apply in the same order. 
+			b Work items
+			|  are defined globally and may be put through multiple pipelines simultaneously without interference. 
+			b Notifications
+			|  allow you to receive emails whenever a work item changes to match a given stage's status with a pipeline.
+
+		p The example pipeline, below, shows a 5-stage pipeline definition.
+		.well
+			h2 Sample Pipeline
+			.row-fluid
+				.span4
+					.lead Work Item #1
+				.span8
+					ul.breadcrumbs-one
+						li.stage
+							= link_to 'First Stage',	'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Second',			'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Third',			'#', :class => 'disabled warning'
+						li.stage
+							= link_to 'Forth',			'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Fifth',			'#', :class => 'disabled '
+			.row-fluid
+				.span4
+					.lead Work Item #2
+				.span8
+					ul.breadcrumbs-one
+						li.stage
+							= link_to 'First Stage',	'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Second',			'#', :class => 'disabled danger'
+						li.stage
+							= link_to 'Third',			'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Forth',			'#', :class => 'disabled pending'
+						li.stage
+							= link_to 'Fifth',			'#', :class => 'disabled '
+			.row-fluid
+				p ...
+				p ...
+			.row-fluid
+				.span4
+					.lead Work Item #16
+				.span8
+					ul.breadcrumbs-one
+						li.stage
+							= link_to 'First Stage',	'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Second',			'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Third',			'#', :class => 'disabled disabled'
+						li.stage
+							= link_to 'Forth',			'#', :class => 'disabled complete'
+						li.stage
+							= link_to 'Fifth',			'#', :class => 'disabled complete'
+		p
+			| Notice that each stage is in one of several possible states: 
+			= Status::ALL.join(', ')
+			| .
+
+		hr
+
+		h3 Quick Note About Mobile Access
+		p
+			| PipeCleaner's web interface is designed and implemented using a "fluid" layout system 99% friendly to smartphone and tablet devices with a standards-compliant web browser. Bookmark 
+			= link_to 'the homepage', root_path
+			|  from your device's web browser. Specifically, all the recent majors platforms are known supported:
+			ul
+				li iOS (iPad, iPhone)
+				li Android (Google Nexus 10, Samsung Galaxy 10.1, etc.)
+				li Windows (Dell XPS, Surface RT, Surface Pro, etc.)
+		hr
+
+		h2 Quickstart
+
+		h3 Getting An Account
+		p
+			| Create an account by clicking the 
+			= link_to 'account request link', new_user_registration_path
+			|  in the site header on 
+			= link_to 'the homepage', root_path
+			| . You'll receive an email at the address you provide, asking you to click the confirmation link. Click it, and you'll open a page affirming your account has been confirmed. Note that the gnomes maintaining this system may or may not have configured it to send notification email from an address you expect.
+		p
+			| An administrator will now need manually review your account request and either approve or deny it. Either way, you'll receive an email once he/she makes a decision.
+			b You won't be able to log in until an administrator approves your account.
+
+		h3 Using The Dashboard
+		p
+			| After you receive a happy account approval email, use the 
+			= link_to 'signin link', new_user_session_path
+			|  at the top of the page to log in. You'll automatically be taken to the dashboard.
+		.well
+			= image_tag 'screenshots/dashboard.png'
+		p
+			| The dashboard breaks down into two areas: the "control panel", and knowledge panels. The control panel's primary function is to set the 
+			i active pipeline
+			|  shown on the knowledge panels. You may change this selection at any time to have the screen refresh with the corresponding information. Regardless of your selection, 
+			b the dashboard will automatically refresh every few minutes
+			|  with the latest and greatest information.
+
+		h3 Restrictions on Normal User Accounts
+		p All approved users may use the dashboard to view pipelines and update the status of work items, but may NOT create, remove, or update pipeline or work items. The latter functions require administrative access.
+
+		h3 Notifications
+		p On the dashboard, you may set up notifications on a per-pipeline basis to email you wheneven a work item is updated to a matching status in a given stage. Notification are sent out within several seconds of matching work item updates. All user roles may establish their own notification configuration.
+		.well
+			= image_tag 'screenshots/notifications.png'
+
+		h3 Reports
+		p The dashboard also features a reporting link for viewing general statistics about work items in your pipeline(s). Certain aspects of the reporting page may be interactive.
+		.well
+			= image_tag 'screenshots/reports.png'
+
+
+		hr
+
+		h2 Administrative Functions
+		p
+			| Pre-ordained users may be granted administrative rights within the system. Only admins are able to create, modify, and update pipelines and work items -- as well as manage user accounts -- via a special menu in the top nav bar. This special menu is 
+			i only 
+			| visible to administrators.
+		.well
+			= image_tag 'screenshots/admin_menu.png'
+
+		h3 User Accounts
+		p Occassionally, pesky users will request accounts that you'll need to either approve or deny. Using the user management link under the admin menu, make your decisions, and the user will automatically receive an email noting your decision. The email will be sent from a system account, and will NOT include any identifying information about your personal account.
+		.well
+			= image_tag 'screenshots/accounts.png'
+
+		h3 Pipelines & Work Items
+		p
+			| When you, an admin, navigates the system, links will periodically become enabled and visible that normal users can't see. For example, your dashboard will have an 
+			= link_to 'Edit Pipeline', '#', class: 'disabled btn'
+			|  link that's normally invisible, which allows you to tweak the tweak the stage configuration, as well as manage attached work items. When deleting stuff, remember that work items have their own lifecycle separate from that of any attached pipeline. In other words, deleting a pipeline deletes its stages and status updates but NOT work items.
+		p To create a complete a completely new pipeline or work item, use the corresponding management screen under the "Admin" menu.
+		.well
+			= image_tag 'screenshots/pipeline_edit.png'

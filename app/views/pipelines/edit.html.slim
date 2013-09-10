@@ -1,0 +1,99 @@
+- model_class = Pipeline
+- model = @pipeline.name
+
+#pipeline-edit
+	div
+		h1
+			| Edit the  
+			= @pipeline.name
+			|  pipeline.
+		p.muted = link_to 'see all pipelines', pipelines_path
+
+	.row
+		.span6
+			h2 Basics
+			= render :partial => "form"
+		.span6
+			h2 Trigger Summary
+			p.muted Edit the corresponding stage to add, update and remove individual triggers.
+			table.table.table-condensed
+				thead
+					tr
+						th Stage
+						th Condition
+						th Service
+						th Basic/Extended/User Data
+						th Last Processed
+				tbody
+				- @pipeline.stages.each do |s|
+					- s.triggers.each do |t|
+						tr
+							td = link_to s.name, edit_pipeline_stage_path(s.pipeline, s)
+							td = t.condition
+							td = link_to t.service.name, edit_service_path(t.service)
+							td
+								= check_box_tag t.id, 'include_basic', t.service.include_basic, disabled: true
+								| &nbsp;
+								= check_box_tag t.id, 'include_extended', t.service.include_extended, disabled: true
+								| &nbsp;
+								= check_box_tag t.id, 'include_data', t.service.include_data, disabled: true
+
+	h2 Stage Configuration
+	span.help-block Drag and drop the stages below to rearrange them. Also note the edit and delete buttons!
+	= link_to 'Add a stage.', new_pipeline_stage_path(@pipeline), class: 'btn btn-primary'
+	
+	p
+		ul.breadcrumbs-one#pipeline-order data-pipeline-id="#{@pipeline.id}"
+			- @pipeline.stages.rank(:number).each do |s|
+				li.stage id="stage_#{s.id}" data-stage-id="#{s.id}"
+					|  
+					= link_to (\
+							'<i class="icon-align-justify"> </i> '.html_safe + \
+							s.name + \
+							" <i class='icon-edit' data-stage-id='#{s.id}'> </i>".html_safe + \
+							" <i class='icon-trash' data-stage-id='#{s.id}'> </i>".html_safe),
+						'#', class: 'complete disabled'
+		
+	
+	hr
+	
+	h2 Associated Work Items
+	p.help-block Drag and drop work items between the two tables to choose what is in the pipeline. Note that removing 	an item from the pipeline will also delete it's history! In other works, re-adding the item to the pipeline will NOT restore it's old stage statuses.
+	p = link_to 'manage all work items', items_path
+	p = link_to 'go to dashboard', dashboard_path
+	
+	- all = Item.all
+	- associated = @pipeline.items
+	- disassociated = all - associated
+	.row-fluid
+		.span8.offset2
+			input.search-query id="work-item-search" type="text" placeholder="Search"
+			.help-block Use this search box search for items based on item name or project tag!
+	.row-fluid#work-items
+		.span4.offset2.well
+			h3 In Pipeline
+			/ p.muted All items in this column are currently "flowing" through the pipeline.
+			ul.work-item-list.associated
+				- associated.each do |i|
+					li.tip id="item_#{i.id}" data-item-id="#{i.id}" data-toggle="tooltip" data-original-title="Project tags: #{i.project_list.empty? ? '(none)' : i.project_list}"
+						i.icon-align-justify
+						|  
+						= i.name
+						span.hidden
+							= i.project_list
+		.span4.well
+			h3 Not In Pipeline
+			/ p.muted None of these items have joined the pipeline.
+			ul.work-item-list.disassociated
+				- disassociated.each do |i|
+					li.tip id="item_#{i.id}" data-item-id="#{i.id}" data-toggle="tooltip" data-original-title="Project tags: #{i.project_list.empty? ? '(none)' : i.project_list}"
+						i.icon-align-justify
+						|  
+						= i.name
+						span.hidden
+							= i.project_list
+		
+
+					
+
+	

@@ -1,0 +1,21 @@
+= form_for @trigger do |f|
+  - if @trigger.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@trigger.errors.count, "error")} prohibited this trigger from being saved:"
+      ul
+        - @trigger.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :stage_id
+    = f.number_field :stage_id
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :verb
+    = f.text_field :verb
+  .field
+    = f.label :condition
+    = f.text_field :condition
+  .actions = f.submit 'Save'

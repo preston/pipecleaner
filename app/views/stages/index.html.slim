@@ -1,0 +1,22 @@
+h1 Listing stages
+
+table
+	tr
+		th Pipeline
+		th Name
+		th Description
+		th Actions
+
+	- @stages.each do |stage|
+		tr
+			td = stage.pipeline_id
+			td = stage.name
+			td = stage.description
+			td
+				= link_to 'Show', pipeline_stage_path(stage.pipeline, stage)
+				= link_to 'Edit', edit_pipeline_stage_path(stage.pipeline, stage)
+				= link_to 'Destroy', [stage.pipeline, stage], :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Stage', new_pipeline_stage_path(@pipeline)

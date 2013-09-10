@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Ability - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/ability.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">CanCan::Ability</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AdminMailer.html">AdminMailer</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./DelayedJob.html">DelayedJob</a>
+  
+    <li><a href="./DelayedJobsController.html">DelayedJobsController</a>
+  
+    <li><a href="./DocumentsController.html">DocumentsController</a>
+  
+    <li><a href="./DocumentsHelper.html">DocumentsHelper</a>
+  
+    <li><a href="./Favorite.html">Favorite</a>
+  
+    <li><a href="./FavoritesController.html">FavoritesController</a>
+  
+    <li><a href="./FavoritesHelper.html">FavoritesHelper</a>
+  
+    <li><a href="./Item.html">Item</a>
+  
+    <li><a href="./ItemsController.html">ItemsController</a>
+  
+    <li><a href="./ItemsHelper.html">ItemsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Notification.html">Notification</a>
+  
+    <li><a href="./Notifications.html">Notifications</a>
+  
+    <li><a href="./NotificationsController.html">NotificationsController</a>
+  
+    <li><a href="./NotificationsHelper.html">NotificationsHelper</a>
+  
+    <li><a href="./Pipeline.html">Pipeline</a>
+  
+    <li><a href="./PipelinesController.html">PipelinesController</a>
+  
+    <li><a href="./PipelinesHelper.html">PipelinesHelper</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./Stage.html">Stage</a>
+  
+    <li><a href="./StagesController.html">StagesController</a>
+  
+    <li><a href="./StagesHelper.html">StagesHelper</a>
+  
+    <li><a href="./Status.html">Status</a>
+  
+    <li><a href="./StatusesController.html">StatusesController</a>
+  
+    <li><a href="./StatusesHelper.html">StatusesHelper</a>
+  
+    <li><a href="./Trigger.html">Trigger</a>
+  
+    <li><a href="./TriggersController.html">TriggersController</a>
+  
+    <li><a href="./TriggersHelper.html">TriggersHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Ability</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/models/ability.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-comment"># Define abilities for the passed in user here. For example:</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment">#   user ||= User.new # guest user (not logged in)</span>
+        <span class="ruby-comment">#   if user.admin?</span>
+        <span class="ruby-comment">#     can :manage, :all</span>
+        <span class="ruby-comment">#   else</span>
+        <span class="ruby-comment">#     can :read, :all</span>
+        <span class="ruby-comment">#   end</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># The first argument to `can` is the action you are giving the user </span>
+        <span class="ruby-comment"># permission to do.</span>
+        <span class="ruby-comment"># If you pass :manage it will apply to every action. Other common actions</span>
+        <span class="ruby-comment"># here are :read, :create, :update and :destroy.</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># The second argument is the resource the user can perform the action on. </span>
+        <span class="ruby-comment"># If you pass :all it will apply to every resource. Otherwise pass a Ruby</span>
+        <span class="ruby-comment"># class of the resource.</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># The third argument is an optional hash of conditions to further filter the</span>
+        <span class="ruby-comment"># objects.</span>
+        <span class="ruby-comment"># For example, here the user can only update published articles.</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment">#   can :update, Article, :published =&gt; true</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># See the wiki for details:</span>
+        <span class="ruby-comment"># https://github.com/ryanb/cancan/wiki/Defining-Abilities</span>
+
+        <span class="ruby-identifier">user</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span> <span class="ruby-comment"># guest user (not logged in)</span>
+        <span class="ruby-identifier">cannot</span> <span class="ruby-value">:manage</span>, <span class="ruby-value">:all</span>
+        <span class="ruby-identifier">cannot</span> <span class="ruby-value">:approve</span>, <span class="ruby-constant">User</span>
+        <span class="ruby-identifier">cannot</span> <span class="ruby-value">:deny</span>, <span class="ruby-constant">User</span>
+        <span class="ruby-identifier">cannot</span> <span class="ruby-value">:transfer</span>, <span class="ruby-constant">User</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+
+        <span class="ruby-keyword">else</span> <span class="ruby-comment">#all users</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:manage</span>, <span class="ruby-constant">User</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-identifier">cannot</span> <span class="ruby-value">:approve</span>, <span class="ruby-constant">User</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-identifier">cannot</span> <span class="ruby-value">:deny</span>, <span class="ruby-constant">User</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:manage</span>, <span class="ruby-constant">User</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:show</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:active</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:overview</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:recent</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:statistics</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:status</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:favorite</span>, <span class="ruby-constant">Pipeline</span>
+                <span class="ruby-identifier">can</span> <span class="ruby-value">:unfavorite</span>, <span class="ruby-constant">Pipeline</span>
+
+
+                <span class="ruby-comment"># You may only manage your own notifications.</span>
+                <span class="ruby-identifier">can</span> [<span class="ruby-value">:create</span>, <span class="ruby-value">:destroy</span>, <span class="ruby-value">:update</span>, <span class="ruby-value">:show</span>], <span class="ruby-constant">Notification</span>, <span class="ruby-identifier">user</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>}
+
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_guest?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_normal?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_admin?</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:read</span>, <span class="ruby-constant">Service</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_normal?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_admin?</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:advance</span>, <span class="ruby-constant">Status</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:ping</span>, <span class="ruby-constant">Status</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_admin?</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:approve</span>, <span class="ruby-constant">User</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:deny</span>, <span class="ruby-constant">User</span>
+                        <span class="ruby-identifier">can</span> <span class="ruby-value">:manage</span>, <span class="ruby-value">:all</span> <span class="ruby-comment"># User can peform any action on any object.</span>
+                        <span class="ruby-comment"># can :create, Feed</span>
+                        <span class="ruby-comment"># can :create, Torrent</span>
+                <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

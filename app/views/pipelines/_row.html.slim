@@ -1,0 +1,38 @@
+- m = row
+.row-fluid id="member_#{m.id}" class="item-row #{m.archived ? 'archived' : 'active'}" data-item-name="#{m.item.name}" data-project-tags="#{m.item.project_list.join(' ')}"
+	.span2
+		h4.pull-right
+			- ptags = m.item.project_list
+			- if current_user.is_admin?
+				a.tip href="#{edit_item_path(m.item)}" data-toggle="tooltip" title="" data-original-title="#{m.item.notes} Created #{time_ago_in_words(m.created_at)} ago. Project tags: #{ptags.empty? ? '(none)' : ptags.join(', ')}."
+					= m.item.name
+			- else
+				a.tip data-toggle="tooltip" title="" data-original-title="#{m.item.notes} Created #{time_ago_in_words(m.created_at)} ago. Project tags: #{ptags.empty? ? '(none)' : ptags.join(', ')}."
+					= m.item.name
+			span.pull-right
+				| &nbsp;
+				- if m.favorites.where(user_id: current_user).first
+					i.favorite-icon.icon-star data-member-id="#{m.id}"
+				- else
+					i.favorite-icon.icon-star-empty data-member-id="#{m.id}"
+				| &nbsp;
+				- if m.archived
+					i.archive-icon.icon-folder-close data-member-id="#{m.id}"
+				- else
+					i.archive-icon.icon-folder-open data-member-id="#{m.id}"
+				| &nbsp;
+				i.tint-icon.icon-tint data-member-id="#{m.id}" data-item-id="#{m.item.id}"
+				| &nbsp;
+
+	.span10
+		ul.stages.breadcrumbs-one.pull-left
+			- pipeline.stages.rank(:number).each do |s|
+				- status = Status.where(stage_id: s, member_id: m)[0]
+				- code = status.nil? ? Status::DEFAULT : status.code
+				- notes = status.nil? ? '' : status.notes
+				li.stage data-member-id="#{m.id}" data-stage-id="#{s.id}" data-code="#{code}" data-notes="#{notes}"
+					a class="#{code} status-tooltip" rel='tooltip' 
+						= s.name
+
+
+				

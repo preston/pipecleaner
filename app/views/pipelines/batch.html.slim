@@ -1,0 +1,31 @@
+h2 Add a bunch of new work items.
+p.help-block
+	| Use this form to add new work items en mass to the 
+	= @pipeline.name
+	|  pipeline. Note that all work item names must be unique within the system, so any duplicates will be skipped automatically. Note that, for safety reasons, there is no "batch delete" feature, so please double check your data before using this form! Each row must create a single item, and must contain two columns for the items "name" and "notes" fields, though the notes string may be empty. Any double-quote characters within each string must be escaped by an additional double quote. (See example.)
+
+h3 Example Data
+ul
+	li Double-quote every value. (Single quotes won't work!)
+	li Escape embedded double-quote characters with an additional double-quote character.
+	li No extra whitespace or newline characters.
+	li No extra space or tab after the comma on every row.
+p.well
+		| "Don Cornelius","Creator of the nationally syndicated dance/music franchise ""Soul Train""."
+		br
+		| "Bob (Robert) Barker","Best known for hosting CBS's ""The Price Is Right"" from 1972 to 2007."
+		br
+		| "Alan Alda",""
+h3 Now It's Your Turn
+form action="#{submit_batch_pipeline_path(@pipeline)}" class="form-vertical" method="post"
+	input name="authenticity_token" value="#{form_authenticity_token}" type="hidden"
+	.control-group
+		.controls
+			label for="project_tags" Project Tags
+			input name="project_tags" placeholder="foo, bar, acme, shazzle"
+			p.muted An optional comma-seperated-list of project names to associate with these work items.
+	.control-group
+		.controls
+		label for="data" CSV Data
+		textarea type="text" name="data" class="input-block-level" rows="10" required="true"
+	input class="btn btn-primary" name="commit" type="submit" value="Submit batch items."

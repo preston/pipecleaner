@@ -1,0 +1,233 @@
+- content_for :body_class do 'api' end
+
+#api
+	
+	h1 Application Programming Interface (API)
+	p PipeCleaner is a simply workflow tracking dashboard, designed for teams to easily track the status of individual "work items" as 	they flow through a "pipeline".
+	p But all good webapps such as PipeCleaner support more than a fancy GUI, allowing interaction with a simple, clean, RESTful API. Creating, reading, updating, and deleting items, pipelines, and other objects is noooo problem using HTTP calls from your favorite language. The brief examples below are given in several different languages, but all modern languages are supported.
+	p
+		| Start by getting an API token from your 
+		= link_to 'My Account', edit_user_registration_path
+		|  page. Do NOT share or post your token, as it is tied your personal account. You can always reset it from your account page.
+
+	hr
+
+	.row-fluid
+		.span12
+			h2 Updating a status.
+			p
+				| The following examples demonstrate updating the state of the "Brady Barnes" item belong to sandbox pipeline, setting the "Delivery" stage to "skipped". The status_code parameter must be one of: 
+				= Status::ALL.join(', ')
+				| . All names and codes are always case sensitive!
+	
+		.span5
+
+			h3 BASH/cURL
+			pre
+				| #!/bin/bash
+				br
+				| AUTH_TOKEN="yeogzHqgP4gaYRqKwmvr"
+				br
+				| URL="
+				= root_url
+				| statuses/ping"
+				br
+				br
+				| curl -H "Accept: application/json" -X PUT \
+					-d "auth_token=$AUTH_TOKEN" \
+					-d 'pipeline_code=sandbox' \
+					-d 'item_name=Brady Barnes' \
+					-d 'stage_name=Delivery' \
+					-d 'status_code=skipped' \
+					$URL
+
+		.span5
+			h3 JavaScript using jQuery
+			pre
+				| var url = "
+				= root_url + 'statuses/ping'
+				| ";
+				br
+				| $.ajax({url : url, method : 'PUT', data : {
+						pipeline_code : 'sandbox',
+						item_name : 'Brady Barnes',
+						stage_name : 'Delivery',
+						status_code : 'skipped'},
+					success : function(data){
+						console.log(data);
+					}});
+				br
+	
+
+	/ .row-fluid
+		 
+		h3 Java
+		pre
+			| String url = 
+			= root_url + 'statuses/ping'
+			| ;
+			br
+			| TODO
+			br
+			| System.out.println(result);
+
+
+				
+
+	/ .row-fluid
+		h3 Ruby
+		pre
+			| require 'json'
+			br
+			| require 'net/http'
+			br
+			| TODO
+			br
+			| resp = Net::HTTP.get_response(URI.parse(uri))
+			br
+			| puts resp.body
+
+
+	hr
+
+	.row-fluid
+		.span12
+			h2 Finding a work item by name.
+			p
+				| Sometimes you don't know anything about the work item you're interested in except for a name. You can find detailed work item information using either an exact match, or by setting a flag to include similar items. The following examples demonstrate using the item find endpoint in both modes.
+	
+		.span5
+
+			h3 Exact match. (JavaScript)
+			pre
+				|
+					// Finds the work item named 'Alfonzo Amonia'.
+					$.get("http://localhost:3000/items/find.json",
+						{ name : 'Alfonzo Amonia', auth_token : 'yeogzHqgP4gaYRqKwmvr' },
+						function(data) {
+							console.log("Loaded " + data[0]['name']);
+						}
+					);
+
+		.span5
+			h3 Wildcard search. (JavaScript)
+			pre
+				|
+					// Finds every work item with 'nz' in its name.
+					$.get("http://localhost:3000/items/find.json",
+						{ name : 'nz', auth_token : 'yeogzHqgP4gaYRqKwmvr', like : true},
+						function(data) {
+							console.log("Loaded " + data.length + " items.");
+						}
+					);
+
+	hr
+
+	.row-fluid
+		.span12
+			h2 Creating a work item.
+			p
+				| Only a name is a required to create a work item. Note that work item names must be *unique* with the entire system, so you'll get an error message if you attempt to create a work item that already exists. Also note that you'll probably want to remember the work item ID returned from this call if you intend to also put the item into a pipeline.
+	
+		.span5
+
+			h3 BASH/cURL, returning XML
+			pre
+				| #!/bin/bash
+				br
+				| AUTH_TOKEN="yeogzHqgP4gaYRqKwmvr"
+				br
+				| URL="
+				= root_url
+				| items.xml"
+				br
+				br
+				| curl -H "Accept: application/xml" -X POST \
+					-d "auth_token=$AUTH_TOKEN" \
+					-d 'item[name]=Chronos God of Time' \
+					-d 'item[notes]=Blah blah blah.' \
+					-d 'item[project_list]=greek,god,example' \
+					$URL
+
+		.span5
+			h3 jQuery, returning JSON
+			pre
+				| var url = "
+				= root_url + 'items.json'
+				| ";
+				br
+				| $.ajax({url : url, method : 'POST', data : {
+						item : {
+							name : 'Chronos God of Time',
+							project_list : 'greek,god,example',
+							notes : 'Blah blah blah.'
+						},
+						auth_token : 'yeogzHqgP4gaYRqKwmvr'
+					},
+					success : function(data){
+						console.log('Work item created with ID ' + data['id']);
+					}});
+				br
+
+	hr
+
+	.row-fluid
+		.span12
+			h2 Associating a work item with a pipeline.
+			p
+				| Work items aren't added to pipelines by default, so at some point you'll want to make your new work items "members" of any number of pipelines. Creating membership records only requires a pipeline code and work item ID. If the work item is already part of the pipeline you should get at error code in response.
+	
+		.span5
+
+			h3 BASH/cURL, returning XML
+			pre
+				| #!/bin/bash
+				br
+				| AUTH_TOKEN="yeogzHqgP4gaYRqKwmvr"
+				br
+				| URL="
+				= root_url
+				| pipelines/sandbox/members.xml"
+				br
+				br
+				| curl -H "Accept: application/xml" -X POST \
+					-d "auth_token=$AUTH_TOKEN" \
+					-d 'member[item_id]=7' \
+					$URL
+
+		.span5
+			h3 jQuery, returning JSON
+			pre
+				| var url = "
+				= root_url + 'pipelines/sandbox/members.json'
+				| ";
+				br
+				| $.ajax({url : url, method : 'POST', data : {
+						member : { item_id : 7 },
+						auth_token : 'yeogzHqgP4gaYRqKwmvr'
+					},
+					success : function(data){
+						console.log('Successfully added to pipeline with membership ID ' + data['id']);
+					}});
+				br
+
+	hr
+
+
+	h2 All Endpoints
+
+	p TODO
+
+	table.table-condensed
+		thead
+			tr
+				th
+				th
+				th
+		tbody
+			tr
+				td
+				td
+				td
+
+		

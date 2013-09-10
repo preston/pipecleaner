@@ -1,0 +1,10 @@
+h1
+	| Editing "
+	= @stage.name
+	| " Stage
+p.muted
+	| (Part of the 
+	= @stage.pipeline.name
+	|  pipeline.)
+
+== render 'form'

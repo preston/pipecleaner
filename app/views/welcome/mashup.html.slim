@@ -1,0 +1,24 @@
+- content_for :body_class do 'mashup' end
+
+- if current_user.authentication_token.nil?
+	.hero-unit
+		h1 You need an API key first!
+		p
+			| You must generate an API token on your 
+			= link_to 'account page', edit_user_registration_path
+			|  before viewing this example!
+- else
+
+	h1 Dynamically-created progress bars.
+	p The status bar(s) below are created dynamically using inline JavaScript (using jQuery) and AJAX. Note that this client-side example inlines the API key for your personal account! Use caution with integrating, as exposing your API key is a security risk for everyone. Ergo, you probably want to make sure queries on the server side using your template language of choice. Regardless, the same processe applies.
+
+	#example.well
+		- item = Item.first
+		h1
+			= item.name
+			| 's progress.
+		button#refresh_progress.btn.btn-primary data-item-name="#{item.name}" data-token="#{current_user.authentication_token}" Click to load dynamically!
+
+h1 Sample JavaScript
+pre
+	= File.read(File.join(Rails.root, 'app', 'assets', 'javascripts', 'mashup.js'))

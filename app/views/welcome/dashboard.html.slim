@@ -1,0 +1,91 @@
+- content_for :body_class do 'dashboard' end
+- stages = @pipeline.stages.rank(:number)
+
+
+#dashboard
+
+	button.btn.btn-inverse.btn-large data-toggle="collapse" data-target="#control-panel"
+		i.icon-wrench
+			|  Control Panel
+
+	.row-fluid.collapse.in#control-panel 
+		.span4
+			/ h3
+			  |  Control Panel  
+			br
+			form#pipeline_selector
+				.control-group
+					= label_tag :pipeline, 'Pipeline'
+					.controls
+						select
+							= options_for_select(Pipeline.all.collect{|p| [p.name,p.id]}, @pipeline.id)
+
+				label.checkbox
+					input id="refresh" type="checkbox" checked="true"
+					| Auto-refresh page every minute.
+				label.checkbox
+					input id="show-archived" type="checkbox"
+					| Show archived items.
+				input#text-filter type="text" class="search-query" placeholder="Text Filter"
+				br
+				br
+				.btn.btn-primary#refresh-button
+					i.icon-refresh
+					|  Refresh now!
+		.span8#overview
+			= render partial: 'pipelines/overview', locals: {pipeline: @pipeline}
+
+	hr
+	h3
+		i.icon-arrow-right
+		|  Work Items
+	br
+	.row-fluid#status
+		= render partial: 'pipelines/status', locals: {pipeline: @pipeline}
+
+
+
+	/ Outside the partials to prevent them front disappearing during ajax reloads.
+	div#show_data_dialog class="modal hide fade"
+		.modal-header
+		  button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+		  h3 Show JSON Data Blob
+		.modal-body
+			/ Loaded dynamically.
+		.modal-footer
+		  a href="#" class="btn" data-dismiss="modal" Close
+	
+	
+	div#edit_status_dialog class="modal hide fade"	
+		.modal-header
+		  button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+		  h3 Edit Status
+		.modal-body
+			form.form#status-form
+				/ h3 Status
+				input id='status-member-id' type='hidden' name='status[member_id]' value=''
+				input id='status-stage-id' type='hidden' name='status[stage_id]' value=''
+				- Status::COLORS.each do |k,v|
+					label class="radio"
+						input type="radio" name="status[code]" id="status_code" value="#{k}" checked='true'
+						span style="background-color: #{v};" &nbsp;&nbsp;&nbsp;&nbsp;							
+						| &nbsp;
+						= k.camelize
+				.control-group
+					label.control-label for='status_notes' Notes
+					.controls
+						textarea.input-xlarge id="status_notes" name='status[notes]' rows=8
+		.modal-footer
+		  a href="#" class="btn" data-dismiss="modal" Close
+		  button.btn.btn-primary Save
+
+	/ For notification management specific to this user and pipeline.
+	div#edit_notifications_dialog class="modal hide fade"	
+		.modal-header
+		  button type="button" class="close" data-dismiss="modal" aria-hidden="true" &times;
+		  h3 Your Notifications
+		.modal-body
+			/ Dynamically loaded.
+		.modal-footer
+		  a href="#" class="btn" data-dismiss="modal" Cancel
+		  button.btn.btn-primary Save

@@ -1,0 +1,23 @@
+= form_for @pipeline, :html => { :class => "form-horizontal" } do |f|
+
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        = f.text_field :name, required: true, placeholder: 'Order Processing'
+        span class="help-block" Human-readable name.
+    .control-group
+      = f.label :code, :class => 'control-label'
+      .controls
+        = f.text_field :code, required: true, placeholder: 'orders'
+        span class="help-block" Short, lowercase codename.
+
+    .control-group
+      = f.label :description, :class => 'control-label'
+      .controls
+        = f.text_area :description, required: true, placeholder: "Donec sed odio dui. Sed posuere    consectetur est at   lobortis. Cras mattis consectetur purus sit amet fermentum. Donec  ullamcorper   nulla non metus auctor fringilla.", rows: 8
+        span class="help-block" Verbose description of the pipeline.
+        hr
+        = f.submit 'Save', :class => 'btn btn-primary'
+
+    / .form-actions
+        

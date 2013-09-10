@@ -1,0 +1,6 @@
+h2 = @item.name
+
+p Every work item's data blob is syntactically-valid, UTF-8-encoded JSON. The size of the entire structure must be kept to larger than 100KB in size. In other words, it's for general message passing between services and NOT a data storage or archiving solution. Do not abuse the blob! Blob does not like abuse!
+
+pre
+	= @item.data

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Service - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/service.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-notify">#notify</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AdminMailer.html">AdminMailer</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./DelayedJob.html">DelayedJob</a>
+  
+    <li><a href="./DelayedJobsController.html">DelayedJobsController</a>
+  
+    <li><a href="./DocumentsController.html">DocumentsController</a>
+  
+    <li><a href="./DocumentsHelper.html">DocumentsHelper</a>
+  
+    <li><a href="./Favorite.html">Favorite</a>
+  
+    <li><a href="./FavoritesController.html">FavoritesController</a>
+  
+    <li><a href="./FavoritesHelper.html">FavoritesHelper</a>
+  
+    <li><a href="./Item.html">Item</a>
+  
+    <li><a href="./ItemsController.html">ItemsController</a>
+  
+    <li><a href="./ItemsHelper.html">ItemsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Notification.html">Notification</a>
+  
+    <li><a href="./Notifications.html">Notifications</a>
+  
+    <li><a href="./NotificationsController.html">NotificationsController</a>
+  
+    <li><a href="./NotificationsHelper.html">NotificationsHelper</a>
+  
+    <li><a href="./Pipeline.html">Pipeline</a>
+  
+    <li><a href="./PipelinesController.html">PipelinesController</a>
+  
+    <li><a href="./PipelinesHelper.html">PipelinesHelper</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./Stage.html">Stage</a>
+  
+    <li><a href="./StagesController.html">StagesController</a>
+  
+    <li><a href="./StagesHelper.html">StagesHelper</a>
+  
+    <li><a href="./Status.html">Status</a>
+  
+    <li><a href="./StatusesController.html">StatusesController</a>
+  
+    <li><a href="./StatusesHelper.html">StatusesHelper</a>
+  
+    <li><a href="./Trigger.html">Trigger</a>
+  
+    <li><a href="./TriggersController.html">TriggersController</a>
+  
+    <li><a href="./TriggersHelper.html">TriggersHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Service</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="ALLOWED_VERBS">ALLOWED_VERBS
+        
+        <dd class="description">
+        
+      
+        <dt id="VERB_DELETE">VERB_DELETE
+        
+        <dd class="description">
+        
+      
+        <dt id="VERB_GET">VERB_GET
+        
+        <dd class="description">
+        
+      
+        <dt id="VERB_HEAD">VERB_HEAD
+        
+        <dd class="description">
+        
+      
+        <dt id="VERB_POST">VERB_POST
+        
+        <dd class="description">
+        
+      
+        <dt id="VERB_PUT">VERB_PUT
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-notify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">notify</span><span
+            class="method-args">(status, trigger = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="notify-source">
+            <pre><span class="ruby-comment"># File app/models/service.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify</span>(<span class="ruby-identifier">status</span>, <span class="ruby-identifier">trigger</span> = <span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">resp</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">stage</span> = <span class="ruby-identifier">status</span>.<span class="ruby-identifier">stage</span>
+
+        <span class="ruby-comment"># Sanity check the current conditions</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">trigger</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">trigger</span>.<span class="ruby-identifier">condition</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">code</span>
+                <span class="ruby-identifier">payload</span> = {}
+                <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">include_basic</span>
+                        <span class="ruby-identifier">stages</span> = <span class="ruby-identifier">stage</span>.<span class="ruby-identifier">pipeline</span>.<span class="ruby-identifier">stages</span>.<span class="ruby-identifier">sort</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">number</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">number</span>}
+                        <span class="ruby-identifier">previous</span> = <span class="ruby-identifier">stages</span>[<span class="ruby-identifier">stage</span>.<span class="ruby-identifier">number</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
+                        <span class="ruby-identifier">current</span> = <span class="ruby-identifier">stages</span>[<span class="ruby-identifier">stage</span>.<span class="ruby-identifier">number</span>]
+                        <span class="ruby-identifier">nex</span> = <span class="ruby-identifier">stages</span>[<span class="ruby-identifier">stage</span>.<span class="ruby-identifier">number</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:status</span>] = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">to_json</span>(<span class="ruby-identifier">include</span><span class="ruby-operator">:</span> [<span class="ruby-value">:member</span>, <span class="ruby-value">:stage</span>])
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:stage_name</span>] = <span class="ruby-identifier">current</span>.<span class="ruby-identifier">name</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:item_name</span>] = <span class="ruby-identifier">status</span>.<span class="ruby-identifier">member</span>.<span class="ruby-identifier">item</span>.<span class="ruby-identifier">name</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:pipeline_code</span>] = <span class="ruby-identifier">stage</span>.<span class="ruby-identifier">pipeline</span>.<span class="ruby-identifier">code</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:pipeline_name</span>] = <span class="ruby-identifier">stage</span>.<span class="ruby-identifier">pipeline</span>.<span class="ruby-identifier">name</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:previous_stage_id</span>] = <span class="ruby-identifier">previous</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">previous</span>.<span class="ruby-identifier">nil?</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:previous_stage_name</span>] = <span class="ruby-identifier">previous</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">previous</span>.<span class="ruby-identifier">nil?</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:next_stage_id</span>] = <span class="ruby-identifier">nex</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">nex</span>.<span class="ruby-identifier">nil?</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:next_stage_name</span>] = <span class="ruby-identifier">nex</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">nex</span>.<span class="ruby-identifier">nil?</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">include_extended</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:member</span>] = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">member</span>.<span class="ruby-identifier">to_json</span>(<span class="ruby-identifier">include</span><span class="ruby-operator">:</span> [<span class="ruby-value">:statuses</span>, <span class="ruby-value">:item</span>])
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:pipeline</span>] = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">stage</span>.<span class="ruby-identifier">pipeline</span>.<span class="ruby-identifier">to_json</span>(<span class="ruby-identifier">include</span><span class="ruby-operator">:</span> [<span class="ruby-value">:stages</span>])
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">include_data</span>
+                        <span class="ruby-identifier">data</span> = {}
+                        <span class="ruby-keyword">begin</span>
+                                <span class="ruby-identifier">data</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">status</span>.<span class="ruby-identifier">member</span>.<span class="ruby-identifier">item</span>.<span class="ruby-identifier">data</span>)
+                        <span class="ruby-keyword">rescue</span>
+                                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;BUG: Why is there bad JSON in the database!?!?&quot;</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">payload</span>[<span class="ruby-value">:data</span>] = <span class="ruby-identifier">data</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">h</span> = {<span class="ruby-string">&#39;Content-Type&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;application/json&#39;</span>}
+                <span class="ruby-identifier">body</span> = <span class="ruby-identifier">payload</span>.<span class="ruby-identifier">to_json</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;SENDING\n#{body}&quot;</span>
+                <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">verb</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-constant">VERB_GET</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">body</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>)                 
+                <span class="ruby-keyword">when</span> <span class="ruby-constant">VERB_HEAD</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">head</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">body</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>)                        
+                <span class="ruby-keyword">when</span> <span class="ruby-constant">VERB_POST</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">body</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>)                        
+                <span class="ruby-keyword">when</span> <span class="ruby-constant">VERB_PUT</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">put</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">body</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>)                 
+                <span class="ruby-keyword">when</span> <span class="ruby-constant">VERB_DELETE</span>
+                        <span class="ruby-identifier">resp</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">url</span>, <span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">body</span>, <span class="ruby-identifier">headers</span><span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>)                      
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-comment"># Either the trigger is not known, or the condition no longer matcher the applicable status code.</span>
+                <span class="ruby-comment"># This can happen legitimately in the case where the status is updated multiple times in rapid succession</span>
+                <span class="ruby-comment"># before asynchronous trigger processing jobs kick in.</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">resp</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- notify-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- notify-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

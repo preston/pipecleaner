@@ -1,0 +1,37 @@
+#pipeline-edit {
+	#pipeline-order {
+	/*margin-left: -20px;*/
+
+		.stage {
+			cursor: pointer;
+	
+		}
+		li.ui-draggable-dragging {
+			/*color: pink;*/
+			/*background-color: #777;*/
+		}
+		li:hover {
+			/*color: #9b9;*/
+		}
+	}
+
+	#work-items {
+		ul {
+			list-style-type: none;
+			min-height: 200px; /*Might be empty.*/
+			li {
+				cursor: pointer;
+				background-color: #eee;
+				box-shadow: 0 2px 2px rgba(0,0,0,.2);
+				margin: 10px 0;
+				padding: 10px;
+			}
+		}
+	}
+	#work-item-search {
+		width: 90%;
+		margin: 10px;
+		font-size: 1.5em;
+		padding: 10px;
+	}
+}

@@ -1,0 +1,19 @@
+h4
+  i.icon-forward
+  | Active Triggers
+p.muted This chart shows item counts per stage. Stages are ordered from first to last, starting at the top.
+
+- triggers = Trigger.where(stage_id: [pipeline.stages.collect{|s| s.id}]).all
+- if triggers.size > 0
+  table.table.table-striped.table-condensed
+	thead
+	  tr
+		th Stage
+		th Service
+		th Condition
+	tbody
+	  - triggers.each do |t|
+		tr
+		  td = t.stage.name
+		  td = t.service.name
+		  td = t.condition

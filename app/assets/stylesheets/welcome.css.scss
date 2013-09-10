@@ -1,0 +1,110 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container {
+	form {
+
+		
+	}
+}
+
+body {
+		background: image-url("textures/light_noise_diagonal.png") repeat;
+	.tip {
+		color: inherit;
+	}
+	.tip:hover {
+			text-decoration: none;
+	}
+}
+
+body.dashboard,
+body.landing,
+body.api {
+
+	> .container {
+		width: auto;
+	}
+	
+	background: image-url("textures/carbon_fibre.png") repeat;
+
+	#dashboard {
+		// #status-context-menu {
+		// 	z-index: 100;
+		// }
+		ul li.stage ul.dropdown-menu{
+		    display: block;    
+		}
+		
+		ul li.stage ul a.menu:after, .dropdown-toggle:after {
+		  content: none;
+		}
+	}
+	#dashboard,
+	#landing,
+	#api {
+		margin: 20px;
+		background: image-url("textures/light_noise_diagonal.png") repeat;
+		
+
+		padding: 20px;
+		-moz-border-radius:		4px;
+		-webkit-border-radius:	4px;
+		border-radius:			4px;
+		-moz-box-shadow:		0 40px 40px rgba(0,0,0,.8);
+		-webkit-box-shadow:		0 40px 40px rgba(0,0,0,.8);
+		box-shadow:				0 40px 40px rgba(0,0,0,.8);
+	}
+
+	.item-row {
+		margin: 4px 0;
+
+		.favorite-icon,
+		.archive-icon,
+		.tint-icon,
+		.notification-icon {
+			cursor: pointer;
+		}
+	}
+	h4 {
+
+	}
+}
+
+body {
+	.well {
+		/*-moz-box-shadow:		0 2px 2px rgba(0,0,0,.1) inset;*/
+		/*-webkit-box-shadow:		0 2px 2px rgba(0,0,0,.1) inset;*/
+		/*box-shadow:				0 2px 2px rgba(0,0,0,.1) inset;*/
+	}
+	footer {
+		text-align: center;
+		/*padding: 20px;*/
+		color: #444;
+	}
+}
+
+/* Overrides for some of the default bootstrap styles. */
+
+.progress-complete .bar,
+.progress .bar-complete {
+	background-image: -webkit-gradient(linear, left top, right bottom,	from(	#62c462), to(	#57a957));
+	background-image: -webkit-linear-gradient(top,								#62c462,		#57a957);
+	background-image: -moz-linear-gradient(top,									#62c462,		#57a957);
+	background-image: -ms-linear-gradient(top,									#62c462,		#57a957);
+	background-image: -o-linear-gradient(top,									#62c462,		#57a957);
+	background-image: linear-gradient(to left,									#62c462,		#57a957);
+}
+
+.progress-skipped .bar,
+.progress .bar-skipped {
+	background-image: -webkit-gradient(linear, left top, right bottom,	from(	#999), to(	#777));
+	background-image: -webkit-linear-gradient(top,								#999,		#777);
+	background-image: -moz-linear-gradient(top,									#999,		#777);
+	background-image: -ms-linear-gradient(top,									#999,		#777);
+	background-image: -o-linear-gradient(top,									#999,		#777);
+	background-image: linear-gradient(to left,									#999,		#777);
+}
+

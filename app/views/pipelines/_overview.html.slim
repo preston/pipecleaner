@@ -1,0 +1,50 @@
+
+.btn-toolbar
+	div class="btn-group"
+		- if current_user.is_admin?
+			a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
+				i.icon-wrench
+				|  Tools 
+				span class="caret"
+			ul class="dropdown-menu"
+				li = link_to 'Edit Pipeline', edit_pipeline_path(pipeline)
+				li = link_to 'Batch Work Item Import', batch_pipeline_path(pipeline)
+				li = link_to 'Manage All Work Items', items_path
+		= link_to 'Reports', reports_pipeline_path(pipeline), class: 'btn'
+		a.btn.notification-button
+			i.notification-icon.icon-bullhorn
+			|  Notifications
+
+br
+
+
+
+dl.dl-horizontal
+	dt Description:
+	dd = pipeline.description
+	dt Code:
+	dd = pipeline.code
+	dt Created:
+	dd
+		= time_ago_in_words pipeline.created_at
+		|  ago.
+	dt By:
+	dd = pipeline.user.email
+	dt Stages: 
+	dd
+		span.badge.badge-success
+			= pipeline.stages.count
+			|  
+		= pipeline.stages.rank(:number).collect{|s| "#{s.name}"}.join(', ')
+	dt Active Work items: 
+	dd
+		span.badge.badge-success
+			= Member.active.where(pipeline_id: pipeline.id).count
+		|  
+		= Member.active.where(pipeline_id: pipeline.id).collect{|m| m.item.name}.join(', ')
+	dt API URL:
+	dd
+		= link_to 'JSON', pipeline_url(pipeline, format: 'json')
+		|  
+		= link_to 'XML', pipeline_url(pipeline, format: 'xml')
+

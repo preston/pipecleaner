@@ -1,0 +1,65 @@
+
+
+.badge-wrapper {
+	position: fixed;
+	right: -130px;
+	bottom: 20px;
+
+	.badge {
+			// height: 50px;
+			background: #58C777;
+			width: 200px;
+			text-align: center;
+			font-size: 12pt;
+			padding: 4px;
+			// text-transform: capitalize;
+			// line-height: 50px;
+			font-family: sans-serif;
+			color: #FFF;
+			transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+			position: relative;
+			top: -2px;
+			left: -70px;
+			border: 4px solid #91da9f;
+			// z-index: 3;
+		box-shadow: inset 0px 2px 4px rgba(0,0,0, 0.5);
+	}
+	
+	// .badge:after {
+	// 	position: absolute;
+	// 	content: '';
+	// 	display: block;
+	// 	height: 100px;
+	// 	width: 100px;
+	// 	background: #EDF1EE;
+	// 	top: -55px;
+	// 	left: 130px;
+	// 	transform: rotate(-45deg);
+	// 	-webkit-transform: rotate(-45deg);
+	// 	box-shadow: -115px -121px 0px 0px #EDF1EE;
+	// }
+	
+	// .badge .left {
+	// 	position: absolute;
+	// 	content: '';
+	// 	display: block;
+	// 	top: 50px;
+	// 	left: 25px;
+	// 	height: 8px;
+	// 	width: 8px;
+	// 	background: linear-gradient(135deg, rgba(90, 146, 106, 1) 50%,rgba(90, 146, 106, 0) 50.1%);
+	// }
+	// .badge .right {
+	// 	position: absolute;
+	// 	content: '';
+	// 	display: block;
+	// 	top: 50px;
+	// 	left: 157px;
+	// 	height: 8px;
+	// 	width: 8px;
+	// 	background: linear-gradient(135deg, rgba(90, 146, 106, 1) 50%,rgba(90, 146, 106, 0) 50.1%);
+	// 	transform: rotate(90deg);
+	// }
+
+}

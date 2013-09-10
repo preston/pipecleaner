@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Member:
+  = @status.member_id
+p
+  strong Stage:
+  = @status.stage_id
+
+= link_to 'Edit', edit_status_path(@status)
+'|
+= link_to 'Back', statuses_path

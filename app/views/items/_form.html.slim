@@ -1,0 +1,16 @@
+= form_for @item, :html => { :class => "form-horizontal" } do |f|
+
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :placeholder => 'Another Work Item', required: true
+  .control-group
+    = f.label :project_list, :class => 'control-label'
+    .controls
+      = f.text_field :project_list, :placeholder => 'optional, project, tags', required: false
+  .control-group
+    = f.label :notes, :class => 'control-label'
+    .controls
+      = f.text_area :notes, :class => 'text_area', placeholder: "Optional freeform text of your choice..."
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'

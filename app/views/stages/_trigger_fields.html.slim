@@ -1,0 +1,26 @@
+.nested-fields.row.well
+	.span6
+		.control-group
+			= f.label :service_id, class: 'control-label'
+			.controls
+				= f.select :service_id, options_for_select(Service.all.collect{|s| [s.name, s.id]}, selected: f.object.service_id)
+				/ = throw :fit
+		.control-group
+			= f.label :condition, class: 'control-label'
+			.controls
+				= f.select :condition, Status::ALL, required: true, selected: f.object.condition
+	.span6
+		.control-group.pull-right
+			.controls
+				= link_to_remove_association text_with_icon('Remove Trigger', 'trash'), f, class: 'btn btn-danger'
+		
+		- if !f.object.id.nil?
+			dl.dl-horizontal
+				dt ID
+				dd = f.object.id unless f.object.id.nil?
+				dt Created
+				dd
+					= time_ago_in_words(f.object.created_at) unless f.object.created_at.nil?
+				dt Updated
+				dd
+					= time_ago_in_words f.object.updated_at unless f.object.updated_at.nil?

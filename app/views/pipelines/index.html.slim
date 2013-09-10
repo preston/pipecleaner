@@ -1,0 +1,33 @@
+.page-header
+  h1 Manage pipelines.
+  = link_to 'Create a new pipeline.', new_pipeline_path, :class => 'btn btn-primary'
+
+
+table class="table table-striped table-hover"
+  thead
+    tr
+      th Name
+      th Description
+      th Code
+      th Created
+      th Stages
+      th API URL
+      th Actions
+  tbody
+    - @pipelines.each do |pipeline|
+      tr
+        td = pipeline.name
+        td = pipeline.description
+        td = pipeline.code
+        td
+          = time_ago_in_words pipeline.created_at
+          |  ago.
+        td = pipeline.stages.collect{|s| s.name}.join(', ')
+        td
+          = link_to 'JSON', pipeline_url(pipeline, format: 'json')
+          |  
+          = link_to 'XML', pipeline_url(pipeline, format: 'xml')
+        td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_pipeline_path(pipeline), :class => 'btn btn-mini'
+          '
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), pipeline_path(pipeline), :method => :delete, :data => { :confirm => 'If you delete this pipeline, work items will NOT be deleted, but their association with this pipeline, including all stage statuses, will be irrevokably deleted. Are you 100% sure you want to do this? ' }, :class => 'btn btn-mini btn-danger'

@@ -1,0 +1,38 @@
+- model_class = Notification
+div class="page-header"
+  h1 User-defined notifications.
+  p
+    | PipeCleaner has 
+    = Notification.count
+    |  configured user notifications.
+
+= will_paginate @notifications
+
+table class="table table-striped table-condensed table-hover"
+  thead
+    tr
+      th User
+      th Pipeline
+      th Stage
+      th Condition
+      th Send Count
+      th Created
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+  - @notifications.each do |n|
+    tr
+      td = n.user.email
+      td = n.stage.pipeline.name
+      td = n.stage.name
+      td = n.condition
+      td = n.count
+      td
+        = time_ago_in_words n.created_at
+        |  ago.
+        br
+        = n.created_at
+      td
+         = link_to  t('.edit', :default => t("helpers.links.edit")), edit_notification_path(n), :class => 'btn btn-mini'
+         = link_to t('.destroy', :default => t("helpers.links.destroy")), n, :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-mini btn-danger'
+
+= will_paginate @notifications

@@ -1,0 +1,48 @@
+
+= form_for @service do |f|
+	- if @service.errors.any?
+		#error_explanation
+			h2 = "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
+			ul
+				- @service.errors.full_messages.each do |message|
+					li = message
+
+	p.help-block
+		| Use this form to quickly register a RESTful web service with PipeCleaner. If you want to 
+		i create 
+		| a service from scratch, or make an existing one compatible with PipeCleaner, see the 
+		= link_to 'integration help', integration_path
+		|  page instead!
+	h3 Core Fields
+	.control-group
+		= f.label :name, :class => 'control-label'
+		span.help-block Just a human-readable label shown throughout the system.
+		.controls
+			= f.text_field :name, required: true, placeholder: 'My Service'
+	.control-group
+		= f.label :url, :class => 'control-label'
+		span.muted This is important as it needs to be the exact REST API URL of the service. It's probably something simple. Not that you may manually add a parameters to this URL via a "query string" at the end. This will be merged with any other content before making the service hit. Also note that this URL needs to be network-accessible by this instance of PipeCleaner. Just because you can hit the URL on your local machine doesn't necesarrily mean that PipeCleaner can hit it directly! If you get through service configuration and still aren't seeing the hit on the service side, you might want to enlist a network ninja to help troubleshoot.
+		.controls
+			= f.text_field :url, required: true, placeholder: 'http://example.com/foo'
+	.control-group
+		= f.label :verb, :class => 'control-label'
+		span.help-block These are all the standard HTTP verbs. We require you to choose from this whitelist because not all verbs would make sense to PipeCleaner, or your service, so it doesn't make sense to list them all. If you're not getting a hit in your PipeCleaner-Compatible Service, make sure you are both configured on the correct path as well as the correct verb!
+		.controls
+			= f.select :verb, options_for_select(Service::ALLOWED_VERBS.collect{|v| [v,v]}), required: true
+	h3 Optional Payload
+	div.well
+		p Request should include:
+		.control-group
+			label.checkbox
+				= f.check_box :include_basic
+				| Basic work item information.
+		.control-group
+			label.checkbox
+				= f.check_box :include_extended
+				| Extended work item statistics.
+		.control-group
+			label.checkbox
+				= f.check_box :include_data
+				| User-provided data objects.
+	.form-actions
+		= f.submit 'Save', :class => 'btn btn-primary'

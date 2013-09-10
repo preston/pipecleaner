@@ -1,0 +1,30 @@
+
+= form_for([@stage.pipeline, @stage], html: {class: 'form'}) do |f|
+	- if @stage.errors.any?
+		#error_explanation
+			h2 = "#{pluralize(@stage.errors.count, "error")} prohibited this stage from being saved:"
+			ul
+				- @stage.errors.full_messages.each do |message|
+					li = message
+	.row-fluid
+		.span6
+			.actions = f.submit 'Save', class: 'btn btn-primary'
+			.field
+				= f.label :name
+				= f.text_field :name, required: true
+			.field
+				= f.label :description
+				= f.text_area :description
+		.span6
+	
+			h2 Triggers
+			#triggers
+				= f.fields_for :triggers do |builder|
+					= render 'stages/trigger_fields', f: builder, parent_id: builder.object.id
+				.links
+					= link_to_add_association text_with_icon('Add Trigger', 'plus'), f, :triggers, class: 'btn'
+
+
+	
+	
+

@@ -1,0 +1,37 @@
+- content_for :body_class do 'integration' end
+
+#integration
+	
+	h1 PipeCleaner-Compatible Services
+	p PipeCleaner's most powerful feature is integrating disparate services into fully automated pipeline workflows. Almost any web service supporting basic REST principles will work out of the box. Since connecting your services is done over high-level HTTP calls, wrapping your existing scripts is trivial to do in almost any language. We recommend keeping it simply by using Ruby, Perl, Python or PHP, though any of your Java, C#, and other RESTful web services should work fine, too!
+	hr
+
+	.row-fluid
+		.span6
+			h2.btn.btn-large.btn-inverse 1
+			h3 Integrating existing web services.
+			p To receive PipeCleaner events in your existing RESTful webapps from an existing PipeCleaner pipeline:
+			ol
+				li
+					| As an administrator, go to the 
+					= link_to 'Admin -> Services', services_path
+					|  page.
+				li Click the button add a new service and fill out the form to completion.
+				li Go to the Dashboard and select the pipeline of interest.
+				li Select Tools -> Edit Pipeline and then click the edit button for the stage of interest.
+		.span6
+			h2.btn.btn-large.btn-inverse 2
+			h3 Making your scripts PipeCleaner-Compatible Services.
+			p Adding PipeCleaner compatibility to your own scripts is easy! This is gist is to "wrap" your existing code in something that can be called by a web server running on whatever box you want to trigger your software. We recommend using the Apache HTTPD or nginx web servers on Ubunt or CentOS Linux -- neither of which require licensing fees -- but any modern web server is fine.
+
+	hr
+	h3 Sweet Example
+	p Here's a simple PipeCleaner service wrapper written in Ruby. It receives a requests at the '/' path, decodes the JSON body of the request, print it to the console, then notifies PipeCleaner that the next stage is complete, based on PipeCleaner's provided stage information. Note there are a few hard-coded values that you'll need to replace with legit values for your own instance. You'll also want to enqueue some actual work in the middle somewhere, in which case you'll want to launch the work asynchronously so you can end the current API hit as soon as possible. In this more involved and realistic case, the asynchronous job should notify PipeCleaner about status updates upon completion, instead of doing it in the service wrapper.
+
+	- example = 'advance_next.ru'
+	pre
+		= File.read(File.join(Rails.root, 'bin', example))
+
+	p If you're a Rubyist and already have rack installed,
+	pre
+		= "> rackup #{example}"

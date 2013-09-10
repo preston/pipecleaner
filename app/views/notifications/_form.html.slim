@@ -1,0 +1,21 @@
+= form_for @notification do |f|
+  - if @notification.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@notification.errors.count, "error")} prohibited this notification from being saved:"
+      ul
+        - @notification.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :user_id
+    = f.select :user_id, options_for_select(User.all.sort{|a,b| a.email <=> b.email}.collect{|u| [u.email,u.id]}, @notification.user.id)
+  .field
+    = f.label :stage_id
+    = f.select :stage_id, options_for_select(@notification.stage.pipeline.stages.collect{|a| [a.name,a.id]}, @notification.stage.id)
+  .field
+    = f.label :condition
+    = f.select :condition, options_for_select(Status::ALL.collect{|s| [s,s]}, @notification.condition)
+  .field
+    = f.label :count
+    = f.number_field :count
+  .actions = f.submit 'Save'

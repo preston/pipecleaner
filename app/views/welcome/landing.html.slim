@@ -1,0 +1,66 @@
+- content_for :body_class do 'landing' end
+
+#landing
+
+	.row-fluid
+		.span8
+			= image_tag 'TGen_Color_LOGO_medium.png', class: 'img-rounded'
+			h1 PipeCleaner
+			.lead real-time workflow connector
+			
+			ul.breadcrumbs-one
+				li.stage
+					= link_to 'Configure', dashboard_path, :class => 'complete'
+				li.stage
+					= link_to 'Automate', dashboard_path, :class => 'complete'
+				li.stage
+					= link_to 'Monitor', dashboard_path, :class => 'complete'
+				li.stage
+					= link_to 'Relax', dashboard_path, :class => 'pending'
+				li.stage
+					= link_to 'Repeat', dashboard_path, :class => ''
+
+		.span4
+			- if current_user
+
+			- else
+				h4 Sign in to an existing account.
+				
+				= form_for(:user, url: user_session_path) do |f|
+					div
+						= f.label :email
+						= f.email_field :email, :autofocus => true
+				
+					div
+						= f.label :password
+						= f.password_field :password
+					div
+						label for="user_remember_me"
+							input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"
+							|  Remember me.				
+					div
+						= f.submit "Sign in", class: 'btn btn-primary'
+						hr
+						span or 
+						= link_to 'request an account', new_user_registration_path
+						span .
+
+	hr
+
+	.row-fluid
+		.span4.well
+			h4
+				i.icon-home
+				|  One-Click Status Updates
+			p PipeCleaner keeps your team "assembly line"-style process on the same page with a single visual dashboard representation of the work items flowing through your pipeline(s).
+		.span4.well
+			h4
+				i.icon-wrench
+				|  Script Integration
+			p RESTful APIs are provided for all object types, allowing you to query and update your pipeline in a automated manner using tools of your choice.
+		.span4.well
+			h4
+				i.icon-plane
+				|  Mobile, Cross-Platform Interface
+			p The pure HTML5 interface renders beautifully within your desktop, laptop, smartphone (landscape mode is best), and tablet's up-to-date browser.
+		
