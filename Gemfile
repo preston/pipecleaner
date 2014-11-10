@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.4'
 
-gem 'rails', '3.2.13'
-gem 'thin'
+gem 'rails', '4.1.7'
 
 
 # Twitter bootstrap layout.
@@ -17,16 +16,14 @@ gem 'acts-as-taggable-on'
 gem 'slim-rails'
 
 # Better paths.
-gem 'friendly_id', '~> 4.0.9' # v5 is only for Rails v4
+gem 'friendly_id'
 
 # Stages are ordered.
 gem 'ranked-model'
 
 # Accounts and administration.
 gem 'devise'
-gem 'cancan'
-
-gem 'rails_admin'
+gem 'cancancan'
 
 # Background tasks.
 gem 'delayed_job_active_record'
@@ -48,24 +45,20 @@ gem 'figaro'		# Environment configuration
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',   '~> 4.0.3'
+  # gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 gem 'jquery-rails'
 
 group :production do
-	gem 'pg'	# Heroku
-	gem 'mysql'	# For-realies production.
-	gem 'thin'
+	gem 'pg'
 end
 
 group :development, :test do
 	gem 'railroady'		# Diagraming
 	gem 'sqlite3'
-	gem 'capistrano'	# Deploy with Capistrano
-	gem 'rvm-capistrano'
 	gem 'factory_girl'
 	gem 'factory_girl_rails'
 	gem 'capybara-webkit'
@@ -73,14 +66,11 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'shoulda-matchers'
 
-	# Better debugging
+	gem 'capistrano'
+	gem 'capistrano-rvm'
+	gem 'capistrano-bundler'
+	gem 'capistrano-rails'
+
 	gem 'binding_of_caller'
 	gem 'better_errors'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
