@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.1.4'
+ruby '2.2.0'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.2.0'
 
 
 # Twitter bootstrap layout.
@@ -33,7 +33,7 @@ gem 'daemons'
 gem 'cocoon'
 
 # Better controllers
-gem 'inherited_resources'
+gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
 
 # Service trigger processing
 gem 'httparty'
@@ -70,7 +70,7 @@ group :development, :test do
 	gem 'capistrano-rvm'
 	gem 'capistrano-bundler'
 	gem 'capistrano-rails'
+	gem 'capistrano-passenger'
 
-	gem 'binding_of_caller'
-	gem 'better_errors'
+	gem 'byebug'
 end
