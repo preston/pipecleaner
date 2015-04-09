@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.1'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 
 
 # Twitter bootstrap layout.
@@ -33,7 +33,7 @@ gem 'daemons'
 gem 'cocoon'
 
 # Better controllers
-gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
+gem 'inherited_resources'
 
 # Service trigger processing
 gem 'httparty'
